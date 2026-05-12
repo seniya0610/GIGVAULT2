@@ -303,8 +303,8 @@ class ReviewDispute(Base):
     resolved_at = Column(DateTime)
 
     booking = relationship("BookingContract", back_populates="reviews")
-    reviewer = relationship("User", back_populates="reviews_given")
-    reviewee = relationship("User", back_populates="reviews_received")
+    reviewer = relationship("User", foreign_keys=[reviewer_id], back_populates="reviews_given")
+    reviewee = relationship("User", foreign_keys=[reviewee_id], back_populates="reviews_received")
 
 
 class Setlist(Base):
